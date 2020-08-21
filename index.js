@@ -35,7 +35,7 @@ express()
       await ( db.ref('cryspr-lab-login').push()).set({
         "name": req.body.name,"aggie_ID": req.body.Aggie_ID, "checkin_date": req.body.checkin_date, "checkin_time": req.body.checkin_time, "checkout_date": req.body.checkout_date, "checkout_time": req.body.checkout_time
       })
-      return res.status(200).send('successs'); 
+      return res.status(200).send(JSON.stringify('successs')); 
     } catch (error) {
       console.log(error);
       return res.status(500).send(error);
