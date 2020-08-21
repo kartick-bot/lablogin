@@ -1,0 +1,141 @@
+<html>
+<head>
+    <title>CRYSPR lab</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper">
+        <table id="layoutTable">
+            <tbody>
+                <tr>
+                    <td id="layoutHeaderCell">
+                        <header>
+                            <table id="headerTable">
+                                <tbody>
+                                    <tr>
+                                        <td id="headerLogoCell">
+                                            <img src="./NMSU-White.png" alt="Logo" style="width: 55px;padding: 10px;">
+                                        </td>
+                                        <td id="headerVerticalSpaceCell"></td>
+                                        <td id="headerTitleCell">
+                                            <h2>Login Sheet for CrySPr Lab (CS 155)</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </header>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="layoutMainCell">
+                        <main style="height:100%">
+                            <div id="mainTable">
+                                <div class="container">
+                                    <div class="needs-validation">
+
+                                        <div class="col-md-12 mb-3">
+                                            <label for="validationTooltip01"> Name</label>
+                                            <input type="text" class="form-control" id="validationTooltipname"
+                                                value="Enter the name" required>
+                                            <div class="valid-tooltip">
+                                                Enter Name
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label for="validationTooltip01"> Aggie ID</label>
+                                            <input type="text" class="form-control" id="validationTooltipAggieID"
+                                                value="Enter the AggieID" required>
+                                            <div class="valid-tooltip">
+                                                Enter your Aggie ID
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h4>CHECK IN</h4>
+                                        <br>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="checkindate">Check in date:</label>
+                                            <input type="date" class="form-control" id="validationTooltipinDate"
+                                                value="Enter the check in date" required>
+                                            <div class="valid-tooltip">
+                                                Enter the check in date
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="checkintime">Check in time:</label>
+                                            <input type="time" class="form-control" id="validationTooltipinTime"
+                                                value="Enter the check in time" required>
+                                            <div class="valid-tooltip">
+                                                Enter the check in time
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h4>CHECK OUT</h4>
+                                        <br>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="checkindate">Check out date:</label>
+                                            <input type="date" class="form-control" id="validationTooltipoutDate"
+                                                value="Enter the check out date" required>
+                                            <div class="valid-tooltip">
+                                                Enter the check out date
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="checkintime">Check out time:</label>
+                                            <input type="time" class="form-control" id="validationTooltipoutTime"
+                                                value="Enter the check out time" required>
+                                            <div class="valid-tooltip">
+                                                Enter the check out time
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit" onclick="myFunction()">Submit
+                                            form</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="layoutFooterCell">
+                        <footer></footer>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        function myFunction() {
+
+            let name = document.getElementById("validationTooltipname").value;
+            let Aggie_ID = document.getElementById("validationTooltipAggieID").value;
+            let checkin_date = document.getElementById("validationTooltipinDate").value;
+            let checkin_time = document.getElementById("validationTooltipinTime").value;
+            let checkout_date = document.getElementById("validationTooltipoutDate").value;
+            let checkout_time = document.getElementById("validationTooltipoutTime").value;
+            let loginData = { "name": name, "checkin_date": checkin_date, "checkin_time": checkin_time, "checkout_date": checkout_date, "checkout_time": checkout_time, "Aggie_ID": Aggie_ID };
+            
+            const xhr = new XMLHttpRequest();
+            console.log(xhr)
+            xhr.open('POST', 'https://cyrsp-login.herokuapp.com/login');
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const response = JSON.parse(xhr.responseText);
+                    console.log(response)
+                }               
+                
+            }
+            xhr.send(JSON.stringify(loginData));
+            console.log(loginData)
+        }
+    </script>
+</body>
+
+</html>

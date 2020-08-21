@@ -1,0 +1,40 @@
+#layoutTable {
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+#layoutHeaderCell {
+  background-color: rgb(140, 11, 66);
+  padding: 1rem;
+  list-style: none;
+}
+#headerTable {
+  width: 100%;
+}
+#headerLogoCell {
+  width: 5rem;
+  padding: 0px;
+}
+#headerTitleCell {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0px;
+}
+#layoutMainCell {
+  height: 100%;
+  padding: 1rem 1rem 0.5rem;
+}
+#mainTable {
+  height: 100%;
+  max-width: 768px;
+  border-collapse: collapse;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  margin: 0px auto;
+}
